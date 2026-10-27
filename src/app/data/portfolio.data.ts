@@ -88,6 +88,7 @@ export const PORTFOLIO_DATA: PortfolioContent = {
         'Deploy seletivo por componente e imagens versionadas',
       ],
       status: 'Produto em evolução',
+      siteUrl: 'https://denteflow.com.br/',
       metrics: [
         { label: 'Domínio', value: 'Clínicas' },
         { label: 'Arquitetura', value: 'Monorepo' },
@@ -110,39 +111,39 @@ export const PORTFOLIO_DATA: PortfolioContent = {
     },
     {
       slug: 'geomora',
-      eyebrow: 'AEC tech · geração paramétrica',
+      eyebrow: 'AEC tech · inteligência artificial',
       title: 'Geomora',
       summary:
-        'Estudos preliminares de planta a partir de parâmetros urbanísticos, terreno e programa residencial.',
+        'Criação assistida por IA de estudos preliminares de planta a partir dos dados do terreno, parâmetros e necessidades informados pelo usuário.',
       image: 'assets/projects/geomora.jpg',
       imageAlt: 'Vista aérea urbana que representa o contexto de planejamento do Geomora',
       role: 'Produto, arquitetura e engenharia full stack',
       stack: ['Angular', 'PrimeNG', '.NET 10', 'PostgreSQL', 'NetTopologySuite'],
       facts: [
-        'Parâmetros urbanísticos tipados e versionados',
-        'Modelo geométrico canônico com validação independente',
-        'Resultado tratado explicitamente como estudo preliminar',
+        'Terreno, parâmetros e programa residencial como contexto de entrada',
+        'IA para propor alternativas de organização dos ambientes',
+        'Estudos preliminares sujeitos à validação e revisão profissional',
       ],
-      status: 'Pesquisa aplicada em evolução',
+      status: 'Produto com IA em evolução',
       metrics: [
-        { label: 'Frontend', value: 'Angular' },
-        { label: 'Backend', value: '.NET' },
+        { label: 'Entrada', value: 'Terreno + briefing' },
+        { label: 'Geração', value: 'Assistida por IA' },
         { label: 'Saída', value: 'Estudo preliminar' },
       ],
       challenge:
-        'Transformar parâmetros urbanos e um briefing residencial em alternativas comparáveis, mantendo hipóteses, unidades e limites visíveis.',
+        'Transformar dados objetivos e preferências fornecidos pelo usuário em alternativas de planta coerentes, comparáveis e transparentes quanto às suas limitações.',
       architecture: [
-        'Backend em camadas separa domínio, aplicação, infraestrutura e API.',
-        'Cenários preservam snapshots dos parâmetros usados na geração.',
-        'Frontend encapsula PrimeNG em um design system próprio.',
+        'A interface estrutura dados do terreno, parâmetros e necessidades antes de enviá-los ao fluxo de geração.',
+        'A camada de aplicação prepara o contexto para a IA e normaliza as propostas em um modelo arquitetônico comum.',
+        'Validações geométricas independentes verificam as alternativas antes de apresentá-las ao usuário.',
       ],
       decisions: [
-        'Parâmetros ausentes viram hipóteses explícitas em vez de valores silenciosos.',
-        'Validador geométrico independente rejeita alternativas inconsistentes.',
-        'O gerador não é apresentado como projeto executivo ou aprovação municipal.',
+        'Dados ausentes viram perguntas ou hipóteses explícitas, nunca preenchimentos silenciosos.',
+        'A IA propõe alternativas, mas regras e validações críticas permanecem verificáveis.',
+        'O resultado é apresentado como estudo preliminar, não como projeto executivo ou aprovação municipal.',
       ],
       learning:
-        'Em software técnico, rastreabilidade e limites bem comunicados são tão importantes quanto o algoritmo que produz a saída.',
+        'A IA agrega valor quando transforma o briefing em possibilidades concretas sem ocultar premissas, restrições ou a necessidade de revisão profissional.',
     },
     {
       slug: 'kiarafin',
@@ -160,6 +161,7 @@ export const PORTFOLIO_DATA: PortfolioContent = {
         'Integração Open Finance controlada no backend',
       ],
       status: 'MVP funcional',
+      siteUrl: 'https://kiarafin.jhonata.dev/',
       metrics: [
         { label: 'Modelo', value: 'Household' },
         { label: 'Dados', value: 'PostgreSQL' },
@@ -196,6 +198,7 @@ export const PORTFOLIO_DATA: PortfolioContent = {
         'Galeria acessível com imagens reais preservadas',
       ],
       status: 'Pronto para publicação',
+      siteUrl: 'https://www.climaferservicos.com.br/',
       metrics: [
         { label: 'Entrega', value: 'Institucional' },
         { label: 'Render', value: 'Server-first' },

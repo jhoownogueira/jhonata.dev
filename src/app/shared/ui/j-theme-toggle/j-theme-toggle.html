@@ -1,8 +1,10 @@
 <button
   type="button"
   class="theme-toggle"
-  [attr.aria-label]="theme.isDark() ? 'Ativar tema claro' : 'Ativar tema escuro'"
-  [attr.title]="theme.isDark() ? 'Tema claro' : 'Tema escuro'"
+  [attr.aria-label]="
+    theme.isDark() ? language.ui().activateLightTheme : language.ui().activateDarkTheme
+  "
+  [attr.title]="theme.isDark() ? language.ui().lightTheme : language.ui().darkTheme"
   (click)="theme.toggle()"
 >
   <i [class]="theme.isDark() ? 'pi pi-sun' : 'pi pi-moon'" aria-hidden="true"></i>

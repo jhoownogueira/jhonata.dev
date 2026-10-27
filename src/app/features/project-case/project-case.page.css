@@ -17,6 +17,11 @@
 .case-brand span {
   color: var(--accent);
 }
+.case-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 .case-hero {
   padding-block: 3rem clamp(5rem, 9vw, 8rem);
 }

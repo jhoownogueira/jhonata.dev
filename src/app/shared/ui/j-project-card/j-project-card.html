@@ -2,7 +2,7 @@
   <a
     class="project-media"
     [routerLink]="['/projetos', project.slug]"
-    [attr.aria-label]="'Ver case ' + project.title"
+    [attr.aria-label]="language.ui().viewCase + ' ' + project.title"
   >
     <img
       [src]="project.image"
@@ -20,7 +20,7 @@
       <p class="summary">{{ project.summary }}</p>
     </div>
 
-    <ul class="facts" aria-label="Destaques do projeto">
+    <ul class="facts" [attr.aria-label]="language.ui().projectHighlights">
       @for (fact of project.facts; track fact) {
       <li>{{ fact }}</li>
       }
@@ -28,7 +28,7 @@
 
     <dl class="project-meta">
       <div>
-        <dt>Meu papel</dt>
+        <dt>{{ language.ui().myRole }}</dt>
         <dd>{{ project.role }}</dd>
       </div>
       <div>
@@ -39,14 +39,14 @@
 
     <div class="project-actions">
       <j-button
-        label="Case técnico"
+        [label]="language.ui().technicalCase"
         [href]="'/projetos/' + project.slug"
         variant="text"
         icon="pi pi-arrow-right"
       />
       @if (project.siteUrl) {
       <j-button
-        label="Visitar site"
+        [label]="language.ui().visitSite"
         [href]="project.siteUrl"
         target="_blank"
         variant="text"

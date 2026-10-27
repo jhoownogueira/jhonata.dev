@@ -1,15 +1,18 @@
 <div class="case-page">
   <header class="case-header page-container">
     <a class="case-brand" routerLink="/">jhonata<span>.</span>dev</a>
-    <j-theme-toggle />
+    <div class="case-header-actions">
+      <j-language-select />
+      <j-theme-toggle />
+    </div>
   </header>
 
   <main>
     <section class="case-hero page-container">
       <a class="back-link" routerLink="/" fragment="projetos"
-        ><i class="pi pi-arrow-left"></i> Voltar aos projetos</a
+        ><i class="pi pi-arrow-left"></i> {{ ui().backToProjects }}</a
       >
-      <p class="kicker">Case técnico · {{ project().title }}</p>
+      <p class="kicker">{{ ui().technicalCase }} · {{ project().title }}</p>
       <div class="case-title-grid">
         <div>
           <h1>{{ project().title }}</h1>
@@ -19,9 +22,7 @@
       </div>
       <figure class="case-visual">
         <img [src]="project().image" [alt]="project().imageAlt" />
-        <figcaption>
-          Referência visual do projeto · conteúdo técnico resumido a partir do repositório local
-        </figcaption>
+        <figcaption>{{ ui().visualReference }}</figcaption>
       </figure>
       <dl class="metrics">
         @for (metric of project().metrics; track metric.label) {
@@ -34,14 +35,14 @@
       <div class="case-actions">
         @if (project().siteUrl) {
         <j-button
-          label="Visitar produto"
+          [label]="ui().visitProduct"
           [href]="project().siteUrl"
           target="_blank"
           icon="pi pi-arrow-up-right"
         />
         } @if (project().repositoryUrl) {
         <j-button
-          label="Ver repositório"
+          [label]="ui().viewRepository"
           [href]="project().repositoryUrl"
           target="_blank"
           variant="secondary"
@@ -52,9 +53,9 @@
     </section>
 
     <section class="case-section page-container two-column">
-      <p class="section-label">01 · Contexto</p>
+      <p class="section-label">01 · {{ ui().contextLabel }}</p>
       <div>
-        <h2>O problema antes da tecnologia.</h2>
+        <h2>{{ ui().contextTitle }}</h2>
         <p class="lead">{{ project().challenge }}</p>
         <ul class="fact-list">
           @for (fact of project().facts; track fact) {
@@ -66,16 +67,16 @@
 
     <section class="case-section case-section--tinted">
       <div class="page-container two-column">
-        <p class="section-label">02 · Arquitetura</p>
+        <p class="section-label">02 · {{ ui().architectureLabel }}</p>
         <div>
-          <h2>Limites explícitos para evoluir.</h2>
+          <h2>{{ ui().architectureTitle }}</h2>
           <j-accordion [items]="architectureItems()" />
         </div>
       </div>
     </section>
 
     <section class="case-section page-container two-column">
-      <p class="section-label">03 · Decisões</p>
+      <p class="section-label">03 · {{ ui().decisionsLabel }}</p>
       <div class="decision-list">
         @for (decision of project().decisions; track decision; let index = $index) {
         <article>
@@ -88,14 +89,16 @@
 
     <section class="case-section learning-section">
       <div class="page-container two-column">
-        <p class="section-label">04 · Aprendizado</p>
+        <p class="section-label">04 · {{ ui().learningLabel }}</p>
         <blockquote>{{ project().learning }}</blockquote>
       </div>
     </section>
   </main>
 
   <footer class="case-footer page-container">
-    <a routerLink="/" fragment="projetos"><i class="pi pi-arrow-left"></i> Voltar aos projetos</a>
-    <p>Mais contexto, menos suposições.</p>
+    <a routerLink="/" fragment="projetos"
+      ><i class="pi pi-arrow-left"></i> {{ ui().backToProjects }}</a
+    >
+    <p>{{ ui().caseFooter }}</p>
   </footer>
 </div>

@@ -1,0 +1,42 @@
+<div class="language-select">
+  <button
+    type="button"
+    class="language-trigger"
+    aria-haspopup="listbox"
+    [attr.aria-expanded]="open()"
+    aria-controls="language-options"
+    [attr.aria-label]="language.ui().language"
+    [attr.title]="language.ui().language"
+    (click)="toggle()"
+  >
+    <i class="pi pi-globe" aria-hidden="true"></i>
+    <span>{{ language.locale().split('-')[0].toUpperCase() }}</span>
+    <i class="pi pi-chevron-down chevron" aria-hidden="true"></i>
+  </button>
+
+  @if (open()) {
+  <div
+    id="language-options"
+    class="language-options"
+    role="listbox"
+    [attr.aria-label]="language.ui().language"
+  >
+    <p>{{ language.ui().language }}</p>
+    @for (locale of language.locales; track locale) {
+    <button
+      type="button"
+      role="option"
+      [attr.aria-selected]="language.locale() === locale"
+      [class.active]="language.locale() === locale"
+      (click)="selectLocale(locale)"
+    >
+      <span class="locale-code">{{ locale.split('-')[0].toUpperCase() }}</span>
+      <span>{{ languageName(locale) }}</span>
+      @if (language.locale() === locale) {
+      <i class="pi pi-check" aria-hidden="true"></i>
+      }
+    </button>
+    }
+  </div>
+  }
+</div>

@@ -1,21 +1,18 @@
 <div id="top" class="page-shell">
-  <j-nav [items]="content.navigation" />
+  <j-nav [items]="content().navigation" />
 
   <main>
     <section class="hero page-container" aria-labelledby="hero-title">
       <div class="hero-grid">
         <div class="hero-copy">
-          <p class="kicker">Engenharia de software · Full stack</p>
+          <p class="kicker">{{ ui().heroKicker }}</p>
           <h1 id="hero-title">Jhonata<br /><span>Nogueira</span></h1>
-          <p class="role">Desenvolvedor & arquiteto de software</p>
-          <p class="hero-intro">
-            Crio software do frontend à infraestrutura, conectando interfaces, serviços e os
-            ambientes que os sustentam.
-          </p>
+          <p class="role">{{ ui().heroRole }}</p>
+          <p class="hero-intro">{{ ui().heroIntro }}</p>
           <div class="hero-actions">
-            <j-button label="Ver projetos" href="#projetos" icon="pi pi-arrow-down" />
+            <j-button [label]="ui().viewProjects" href="#projetos" icon="pi pi-arrow-down" />
             <j-button
-              label="Baixar currículo"
+              [label]="ui().downloadResume"
               href="curriculo-jhonata-nogueira.pdf"
               download="curriculo-jhonata-nogueira.pdf"
               variant="secondary"
@@ -24,12 +21,12 @@
           </div>
         </div>
 
-        <aside class="hero-aside" aria-label="Áreas de atuação">
-          <p>Do código ao ambiente</p>
+        <aside class="hero-aside" [attr.aria-label]="ui().practiceAreas">
+          <p>{{ ui().fromCodeToEnvironment }}</p>
           <ol>
-            <li><span>01</span>Interfaces</li>
-            <li><span>02</span>APIs e serviços</li>
-            <li><span>03</span>Infraestrutura</li>
+            <li><span>01</span>{{ ui().interfaces }}</li>
+            <li><span>02</span>{{ ui().apisAndServices }}</li>
+            <li><span>03</span>{{ ui().infrastructure }}</li>
           </ol>
         </aside>
       </div>
@@ -46,8 +43,8 @@
             >LinkedIn <i class="pi pi-arrow-up-right"></i
           ></a>
         </div>
-        <p>Currículo + portfólio técnico</p>
-        <a class="scroll-cue" href="#sobre" aria-label="Ir para a seção sobre"
+        <p>{{ ui().resumeAndPortfolio }}</p>
+        <a class="scroll-cue" href="#sobre" [attr.aria-label]="ui().goToAbout"
           ><i class="pi pi-arrow-down"></i
         ></a>
       </div>
@@ -56,39 +53,21 @@
     <section id="sobre" class="section page-container">
       <j-section-heading
         index="01"
-        label="Sobre"
-        title="Uma visão do sistema inteiro. Atenção a cada camada."
-        intro="Meu escopo conecta frontend, backend e infraestrutura. Penso nas interfaces, nos serviços e na operação como partes do mesmo software — com responsabilidades claras, contratos estáveis e evolução sustentável."
+        [label]="ui().aboutLabel"
+        [title]="ui().aboutTitle"
+        [intro]="ui().aboutIntro"
       />
 
       <div class="about-grid">
-        <p class="about-lead">
-          Engenharia orientada a produto, com repertório em design, comunicação e arquitetura para
-          transformar problemas ambíguos em entregas concretas.
-        </p>
+        <p class="about-lead">{{ ui().aboutLead }}</p>
         <div class="principles">
+          @for (principle of ui().principles; track principle.title; let index = $index) {
           <article>
-            <span>01</span>
-            <h3>Contexto antes da solução</h3>
-            <p>
-              Entender domínio, restrições e operação para decidir o que realmente precisa existir.
-            </p>
+            <span>0{{ index + 1 }}</span>
+            <h3>{{ principle.title }}</h3>
+            <p>{{ principle.description }}</p>
           </article>
-          <article>
-            <span>02</span>
-            <h3>Contratos que protegem mudanças</h3>
-            <p>
-              Interfaces próprias e dependências encapsuladas reduzem acoplamento e custo de
-              evolução.
-            </p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Produção faz parte do produto</h3>
-            <p>
-              Build, deploy, observabilidade e segurança entram na conversa desde a arquitetura.
-            </p>
-          </article>
+          }
         </div>
       </div>
     </section>
@@ -97,12 +76,12 @@
       <div class="page-container">
         <j-section-heading
           index="02"
-          label="Experiência"
-          title="Software com responsabilidade de ponta a ponta."
-          intro="Atuação em produtos digitais, plataformas SaaS e serviços web, da descoberta à publicação."
+          [label]="ui().experienceLabel"
+          [title]="ui().experienceTitle"
+          [intro]="ui().experienceIntro"
         />
         <div class="timeline">
-          @for (experience of content.experiences; track experience.company) {
+          @for (experience of content().experiences; track experience.company) {
           <article class="timeline-item">
             <p class="timeline-period">{{ experience.period }}</p>
             <div>
@@ -111,7 +90,7 @@
             </div>
             <div>
               <p class="timeline-summary">{{ experience.summary }}</p>
-              <ul class="tag-list" aria-label="Tecnologias">
+              <ul class="tag-list" [attr.aria-label]="ui().technologies">
                 @for (technology of experience.technologies; track technology) {
                 <li>{{ technology }}</li>
                 }
@@ -126,12 +105,12 @@
     <section id="projetos" class="section page-container">
       <j-section-heading
         index="03"
-        label="Projetos selecionados"
-        title="Produtos em contexto."
-        intro="Problema, arquitetura e decisões técnicas apresentados sem esconder limites nem preencher lacunas com suposições."
+        [label]="ui().projectsLabel"
+        [title]="ui().projectsTitle"
+        [intro]="ui().projectsIntro"
       />
       <div class="projects-grid">
-        @for (project of content.projects; track project.slug; let index = $index) {
+        @for (project of content().projects; track project.slug; let index = $index) {
         <j-project-card [project]="project" [featured]="index < 2" />
         }
       </div>
@@ -141,12 +120,12 @@
       <div class="page-container">
         <j-section-heading
           index="04"
-          label="Competências técnicas"
-          title="Decisões atravessam camadas."
-          intro="Ferramentas importam; a capacidade de escolher, combinar e substituir cada uma importa mais."
+          [label]="ui().skillsLabel"
+          [title]="ui().skillsTitle"
+          [intro]="ui().skillsIntro"
         />
         <div class="skills-grid">
-          @for (group of content.skills; track group.name; let index = $index) {
+          @for (group of content().skills; track group.name; let index = $index) {
           <article>
             <p><span>0{{ index + 1 }}</span>{{ group.name }}</p>
             <ul>
@@ -162,13 +141,13 @@
 
     <section id="curriculo" class="section page-container resume-section">
       <div>
-        <p class="kicker">05 · Currículo</p>
-        <h2>Experiência e competências, em um documento.</h2>
+        <p class="kicker">05 · {{ ui().resumeLabel }}</p>
+        <h2>{{ ui().resumeTitle }}</h2>
       </div>
       <div>
-        <p>Versão em PDF para consulta, compartilhamento ou impressão.</p>
+        <p>{{ ui().resumeDescription }}</p>
         <j-button
-          label="Baixar currículo"
+          [label]="ui().downloadResume"
           href="curriculo-jhonata-nogueira.pdf"
           download="curriculo-jhonata-nogueira.pdf"
           icon="pi pi-download"
@@ -179,14 +158,11 @@
     <section id="contato" class="contact-section">
       <div class="page-container contact-grid">
         <div>
-          <p class="kicker">06 · Contato</p>
-          <h2>Vamos conversar<br />sobre software.</h2>
+          <p class="kicker">06 · {{ ui().contactLabel }}</p>
+          <h2>{{ ui().contactTitleLine1 }}<br />{{ ui().contactTitleLine2 }}</h2>
         </div>
         <div class="contact-copy">
-          <p>
-            Para falar sobre engenharia, arquitetura ou conhecer melhor os projetos, me encontre
-            nestes canais.
-          </p>
+          <p>{{ ui().contactDescription }}</p>
           <a class="email-link" href="mailto:jhoownogueira@outlook.com"
             >jhoownogueira&#64;outlook.com <i class="pi pi-arrow-up-right"></i
           ></a>
@@ -209,8 +185,8 @@
   <footer class="site-footer">
     <div class="page-container footer-inner">
       <a class="footer-brand" href="#top">jhonata<span>.</span>dev</a>
-      <p>Jhonata Nogueira · Engenharia de software</p>
-      <a href="#top">Voltar ao topo <i class="pi pi-arrow-up"></i></a>
+      <p>Jhonata Nogueira · {{ ui().softwareEngineering }}</p>
+      <a href="#top">{{ ui().backToTop }} <i class="pi pi-arrow-up"></i></a>
     </div>
   </footer>
 </div>

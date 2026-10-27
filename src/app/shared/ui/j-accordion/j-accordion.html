@@ -1,0 +1,12 @@
+<div class="accordion">
+  @for (item of items; track item.title; let index = $index) {
+  <details [attr.open]="index === 0 ? '' : null">
+    <summary>
+      <span>0{{ index + 1 }}</span>
+      <strong>{{ item.title }}</strong>
+      <i class="pi pi-plus" aria-hidden="true"></i>
+    </summary>
+    <p>{{ item.content }}</p>
+  </details>
+  }
+</div>

@@ -1,0 +1,101 @@
+<div class="case-page">
+  <header class="case-header page-container">
+    <a class="case-brand" routerLink="/">jhonata<span>.</span>dev</a>
+    <j-theme-toggle />
+  </header>
+
+  <main>
+    <section class="case-hero page-container">
+      <a class="back-link" routerLink="/" fragment="projetos"
+        ><i class="pi pi-arrow-left"></i> Voltar aos projetos</a
+      >
+      <p class="kicker">Case técnico · {{ project().title }}</p>
+      <div class="case-title-grid">
+        <div>
+          <h1>{{ project().title }}</h1>
+          <p>{{ project().summary }}</p>
+        </div>
+        @if (project().status) { <span class="status">{{ project().status }}</span> }
+      </div>
+      <figure class="case-visual">
+        <img [src]="project().image" [alt]="project().imageAlt" />
+        <figcaption>
+          Referência visual do projeto · conteúdo técnico resumido a partir do repositório local
+        </figcaption>
+      </figure>
+      <dl class="metrics">
+        @for (metric of project().metrics; track metric.label) {
+        <div>
+          <dt>{{ metric.label }}</dt>
+          <dd>{{ metric.value }}</dd>
+        </div>
+        }
+      </dl>
+      <div class="case-actions">
+        @if (project().siteUrl) {
+        <j-button
+          label="Visitar produto"
+          [href]="project().siteUrl"
+          target="_blank"
+          icon="pi pi-arrow-up-right"
+        />
+        } @if (project().repositoryUrl) {
+        <j-button
+          label="Ver repositório"
+          [href]="project().repositoryUrl"
+          target="_blank"
+          variant="secondary"
+          icon="pi pi-github"
+        />
+        }
+      </div>
+    </section>
+
+    <section class="case-section page-container two-column">
+      <p class="section-label">01 · Contexto</p>
+      <div>
+        <h2>O problema antes da tecnologia.</h2>
+        <p class="lead">{{ project().challenge }}</p>
+        <ul class="fact-list">
+          @for (fact of project().facts; track fact) {
+          <li>{{ fact }}</li>
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section case-section--tinted">
+      <div class="page-container two-column">
+        <p class="section-label">02 · Arquitetura</p>
+        <div>
+          <h2>Limites explícitos para evoluir.</h2>
+          <j-accordion [items]="architectureItems()" />
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section page-container two-column">
+      <p class="section-label">03 · Decisões</p>
+      <div class="decision-list">
+        @for (decision of project().decisions; track decision; let index = $index) {
+        <article>
+          <span>0{{ index + 1 }}</span>
+          <p>{{ decision }}</p>
+        </article>
+        }
+      </div>
+    </section>
+
+    <section class="case-section learning-section">
+      <div class="page-container two-column">
+        <p class="section-label">04 · Aprendizado</p>
+        <blockquote>{{ project().learning }}</blockquote>
+      </div>
+    </section>
+  </main>
+
+  <footer class="case-footer page-container">
+    <a routerLink="/" fragment="projetos"><i class="pi pi-arrow-left"></i> Voltar aos projetos</a>
+    <p>Mais contexto, menos suposições.</p>
+  </footer>
+</div>

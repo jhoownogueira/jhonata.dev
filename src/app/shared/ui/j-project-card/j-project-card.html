@@ -1,0 +1,58 @@
+<article class="project-card" [class.project-card--featured]="featured">
+  <a
+    class="project-media"
+    [routerLink]="['/projetos', project.slug]"
+    [attr.aria-label]="'Ver case ' + project.title"
+  >
+    <img
+      [src]="project.image"
+      [alt]="project.imageAlt"
+      [attr.loading]="featured ? 'eager' : 'lazy'"
+    />
+    <span class="media-label">{{ project.eyebrow }}</span>
+    <span class="media-arrow" aria-hidden="true"><i class="pi pi-arrow-up-right"></i></span>
+  </a>
+
+  <div class="project-body">
+    <div>
+      <p class="eyebrow">{{ project.eyebrow }}</p>
+      <h3>{{ project.title }}</h3>
+      <p class="summary">{{ project.summary }}</p>
+    </div>
+
+    <ul class="facts" aria-label="Destaques do projeto">
+      @for (fact of project.facts; track fact) {
+      <li>{{ fact }}</li>
+      }
+    </ul>
+
+    <dl class="project-meta">
+      <div>
+        <dt>Meu papel</dt>
+        <dd>{{ project.role }}</dd>
+      </div>
+      <div>
+        <dt>Stack</dt>
+        <dd>{{ project.stack.join(' · ') }}</dd>
+      </div>
+    </dl>
+
+    <div class="project-actions">
+      <j-button
+        label="Case técnico"
+        [href]="'/projetos/' + project.slug"
+        variant="text"
+        icon="pi pi-arrow-right"
+      />
+      @if (project.siteUrl) {
+      <j-button
+        label="Visitar site"
+        [href]="project.siteUrl"
+        target="_blank"
+        variant="text"
+        icon="pi pi-arrow-up-right"
+      />
+      }
+    </div>
+  </div>
+</article>

@@ -1,0 +1,216 @@
+<div id="top" class="page-shell">
+  <j-nav [items]="content.navigation" />
+
+  <main>
+    <section class="hero page-container" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">Engenharia de software · Full stack</p>
+          <h1 id="hero-title">Jhonata<br /><span>Nogueira</span></h1>
+          <p class="role">Desenvolvedor & arquiteto de software</p>
+          <p class="hero-intro">
+            Crio software do frontend à infraestrutura, conectando interfaces, serviços e os
+            ambientes que os sustentam.
+          </p>
+          <div class="hero-actions">
+            <j-button label="Ver projetos" href="#projetos" icon="pi pi-arrow-down" />
+            <j-button
+              label="Baixar currículo"
+              href="curriculo-jhonata-nogueira.pdf"
+              download="curriculo-jhonata-nogueira.pdf"
+              variant="secondary"
+              icon="pi pi-download"
+            />
+          </div>
+        </div>
+
+        <aside class="hero-aside" aria-label="Áreas de atuação">
+          <p>Do código ao ambiente</p>
+          <ol>
+            <li><span>01</span>Interfaces</li>
+            <li><span>02</span>APIs e serviços</li>
+            <li><span>03</span>Infraestrutura</li>
+          </ol>
+        </aside>
+      </div>
+
+      <div class="hero-footer">
+        <div class="social-links">
+          <a href="https://github.com/jhoownogueira" target="_blank" rel="noopener noreferrer"
+            >GitHub <i class="pi pi-arrow-up-right"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/jhoownogueira"
+            target="_blank"
+            rel="noopener noreferrer"
+            >LinkedIn <i class="pi pi-arrow-up-right"></i
+          ></a>
+        </div>
+        <p>Currículo + portfólio técnico</p>
+        <a class="scroll-cue" href="#sobre" aria-label="Ir para a seção sobre"
+          ><i class="pi pi-arrow-down"></i
+        ></a>
+      </div>
+    </section>
+
+    <section id="sobre" class="section page-container">
+      <j-section-heading
+        index="01"
+        label="Sobre"
+        title="Uma visão do sistema inteiro. Atenção a cada camada."
+        intro="Meu escopo conecta frontend, backend e infraestrutura. Penso nas interfaces, nos serviços e na operação como partes do mesmo software — com responsabilidades claras, contratos estáveis e evolução sustentável."
+      />
+
+      <div class="about-grid">
+        <p class="about-lead">
+          Engenharia orientada a produto, com repertório em design, comunicação e arquitetura para
+          transformar problemas ambíguos em entregas concretas.
+        </p>
+        <div class="principles">
+          <article>
+            <span>01</span>
+            <h3>Contexto antes da solução</h3>
+            <p>
+              Entender domínio, restrições e operação para decidir o que realmente precisa existir.
+            </p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Contratos que protegem mudanças</h3>
+            <p>
+              Interfaces próprias e dependências encapsuladas reduzem acoplamento e custo de
+              evolução.
+            </p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Produção faz parte do produto</h3>
+            <p>
+              Build, deploy, observabilidade e segurança entram na conversa desde a arquitetura.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia" class="section section--tinted">
+      <div class="page-container">
+        <j-section-heading
+          index="02"
+          label="Experiência"
+          title="Software com responsabilidade de ponta a ponta."
+          intro="Atuação em produtos digitais, plataformas SaaS e serviços web, da descoberta à publicação."
+        />
+        <div class="timeline">
+          @for (experience of content.experiences; track experience.company) {
+          <article class="timeline-item">
+            <p class="timeline-period">{{ experience.period }}</p>
+            <div>
+              <p class="timeline-role">{{ experience.role }}</p>
+              <h3>{{ experience.company }}</h3>
+            </div>
+            <div>
+              <p class="timeline-summary">{{ experience.summary }}</p>
+              <ul class="tag-list" aria-label="Tecnologias">
+                @for (technology of experience.technologies; track technology) {
+                <li>{{ technology }}</li>
+                }
+              </ul>
+            </div>
+          </article>
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="projetos" class="section page-container">
+      <j-section-heading
+        index="03"
+        label="Projetos selecionados"
+        title="Produtos em contexto."
+        intro="Problema, arquitetura e decisões técnicas apresentados sem esconder limites nem preencher lacunas com suposições."
+      />
+      <div class="projects-grid">
+        @for (project of content.projects; track project.slug; let index = $index) {
+        <j-project-card [project]="project" [featured]="index < 2" />
+        }
+      </div>
+    </section>
+
+    <section id="competencias" class="section section--dark">
+      <div class="page-container">
+        <j-section-heading
+          index="04"
+          label="Competências técnicas"
+          title="Decisões atravessam camadas."
+          intro="Ferramentas importam; a capacidade de escolher, combinar e substituir cada uma importa mais."
+        />
+        <div class="skills-grid">
+          @for (group of content.skills; track group.name; let index = $index) {
+          <article>
+            <p><span>0{{ index + 1 }}</span>{{ group.name }}</p>
+            <ul>
+              @for (skill of group.items; track skill) {
+              <li>{{ skill }}</li>
+              }
+            </ul>
+          </article>
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="curriculo" class="section page-container resume-section">
+      <div>
+        <p class="kicker">05 · Currículo</p>
+        <h2>Experiência e competências, em um documento.</h2>
+      </div>
+      <div>
+        <p>Versão em PDF para consulta, compartilhamento ou impressão.</p>
+        <j-button
+          label="Baixar currículo"
+          href="curriculo-jhonata-nogueira.pdf"
+          download="curriculo-jhonata-nogueira.pdf"
+          icon="pi pi-download"
+        />
+      </div>
+    </section>
+
+    <section id="contato" class="contact-section">
+      <div class="page-container contact-grid">
+        <div>
+          <p class="kicker">06 · Contato</p>
+          <h2>Vamos conversar<br />sobre software.</h2>
+        </div>
+        <div class="contact-copy">
+          <p>
+            Para falar sobre engenharia, arquitetura ou conhecer melhor os projetos, me encontre
+            nestes canais.
+          </p>
+          <a class="email-link" href="mailto:jhoownogueira@outlook.com"
+            >jhoownogueira&#64;outlook.com <i class="pi pi-arrow-up-right"></i
+          ></a>
+          <div class="contact-links">
+            <a
+              href="https://www.linkedin.com/in/jhoownogueira"
+              target="_blank"
+              rel="noopener noreferrer"
+              >LinkedIn · /in/jhoownogueira</a
+            >
+            <a href="https://github.com/jhoownogueira" target="_blank" rel="noopener noreferrer"
+              >GitHub · /jhoownogueira</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-container footer-inner">
+      <a class="footer-brand" href="#top">jhonata<span>.</span>dev</a>
+      <p>Jhonata Nogueira · Engenharia de software</p>
+      <a href="#top">Voltar ao topo <i class="pi pi-arrow-up"></i></a>
+    </div>
+  </footer>
+</div>

@@ -1,0 +1,79 @@
+:host {
+  display: inline-flex;
+}
+
+.j-button {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-button);
+  padding: 0.78rem 1.15rem;
+  font-size: 0.875rem;
+  font-weight: 650;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease;
+  cursor: pointer;
+}
+
+.j-button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 38%, transparent);
+  outline-offset: 3px;
+}
+
+.j-button--primary {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.j-button--primary:hover {
+  background: var(--accent-strong);
+}
+
+.j-button--secondary {
+  border-color: var(--line-strong);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.j-button--secondary:hover,
+.j-button--ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.j-button--ghost,
+.j-button--text {
+  background: transparent;
+  color: var(--text);
+}
+
+.j-button--ghost {
+  border-color: var(--line);
+}
+
+.j-button--text {
+  min-height: 2.75rem;
+  padding-inline: 0.25rem;
+}
+
+.j-button--text:hover {
+  color: var(--accent);
+}
+
+.j-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.46;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .j-button {
+    transition: none;
+  }
+}

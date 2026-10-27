@@ -20,6 +20,35 @@ npm run format:check
 npm run build
 ```
 
+## Produção com Docker
+
+O site é compilado em uma imagem multi-stage e servido pelo Nginx na porta
+interna `8080`. Para uma instalação manual na VPS:
+
+```bash
+git clone <URL-DO-REPOSITORIO> jhonata.dev
+cd jhonata.dev
+cp .env.production.example .env.production
+docker compose --env-file .env.production \
+  -f docker-compose.production.yml up -d --build
+```
+
+Por padrão, o Compose publica o site em `0.0.0.0:3340` para permitir acesso a
+partir de um proxy reverso executado em outro container. Configure o proxy para
+encaminhar o domínio para a porta `3340` da VPS.
+
+Se o proxy reverso estiver instalado diretamente no host, altere
+`SITE_BIND_ADDRESS` para `127.0.0.1`. Em ambos os casos, mantenha a porta `3340`
+bloqueada no firewall para acesso externo direto e exponha publicamente apenas
+HTTP/HTTPS pelo proxy.
+
+Para validar a implantação:
+
+```bash
+docker compose --env-file .env.production -f docker-compose.production.yml ps
+curl --fail http://127.0.0.1:3340/ >/dev/null
+```
+
 ## Arquitetura
 
 ```text

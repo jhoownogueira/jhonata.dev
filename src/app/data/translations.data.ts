@@ -490,6 +490,38 @@ const PORTFOLIO_DATA_EN: PortfolioContent = {
       learning:
         'A simple website earns trust by being rigorous about image sources, published content, and the amount of JavaScript delivered.',
     },
+    {
+      ...PORTFOLIO_DATA.projects[5],
+      summary:
+        'An open-source Angular component library installed as local code, with its own registry, CLI, and documentation.',
+      imageAlt: 'Monochrome identity of the Aevko UI component library',
+      role: 'Product, design system, and open-source engineering',
+      facts: [
+        '64 editable components distributed through a registry and CLI',
+        'No Aevko runtime dependency or mandatory icon library',
+        'Under construction, with continuous improvements to components, documentation, and DX',
+      ],
+      status: 'Under construction · continuous improvements',
+      metrics: [
+        { label: 'Components', value: '64' },
+        { label: 'Distribution', value: 'Registry · CLI' },
+        { label: 'License', value: 'MIT' },
+      ],
+      challenge:
+        'Provide reusable components without imposing a strong visual identity, a runtime dependency, or an abstraction that limits consumer code.',
+      architecture: [
+        'A canonical registry keeps standalone Angular components, metadata, and transitive dependencies in a single source.',
+        'The npm CLI copies only the requested components into the consumer project, where they remain editable.',
+        'Documentation, GitHub Pages, and pipelines validate SSR, accessibility, isolated installation, and provenance-backed publishing.',
+      ],
+      decisions: [
+        'Local, editable code instead of a closed runtime component library.',
+        'No mandatory Lucide dependency; icons enter through content projection or replaceable SVG.',
+        'Public, incremental evolution with improvements guided by real consumer tests.',
+      ],
+      learning:
+        'A trustworthy open-source UI depends as much on installation, documentation, accessibility, and customization freedom as it does on component quality.',
+    },
   ],
   skills: [
     { name: 'Frontend', items: ['Angular', 'React', 'Next.js', 'TypeScript', 'Tailwind CSS'] },
@@ -691,6 +723,38 @@ const PORTFOLIO_DATA_ES: PortfolioContent = {
       ],
       learning:
         'Un sitio sencillo gana confianza al ser riguroso con el origen de las imágenes, el contenido publicado y la cantidad de JavaScript entregado.',
+    },
+    {
+      ...PORTFOLIO_DATA.projects[5],
+      summary:
+        'Biblioteca open source de componentes Angular instalados como código local, con registry, CLI y documentación propios.',
+      imageAlt: 'Identidad monocromática de la biblioteca de componentes Aevko UI',
+      role: 'Producto, sistema de diseño e ingeniería open source',
+      facts: [
+        '64 componentes editables distribuidos mediante registry y CLI',
+        'Sin dependencia de runtime de Aevko ni biblioteca de iconos obligatoria',
+        'En construcción, con mejoras continuas de componentes, documentación y DX',
+      ],
+      status: 'En construcción · mejoras continuas',
+      metrics: [
+        { label: 'Componentes', value: '64' },
+        { label: 'Distribución', value: 'Registry · CLI' },
+        { label: 'Licencia', value: 'MIT' },
+      ],
+      challenge:
+        'Ofrecer componentes reutilizables sin imponer una identidad visual fuerte, una dependencia de runtime ni una abstracción que limite el código del consumidor.',
+      architecture: [
+        'Un registry canónico mantiene componentes Angular standalone, metadatos y dependencias transitivas en una única fuente.',
+        'El CLI publicado en npm copia solo los componentes solicitados al proyecto consumidor, donde permanecen editables.',
+        'La documentación, GitHub Pages y los pipelines validan SSR, accesibilidad, instalación aislada y publicación con provenance.',
+      ],
+      decisions: [
+        'Código local y editable en lugar de una biblioteca de runtime cerrada.',
+        'Sin dependencia obligatoria de Lucide; los iconos entran mediante proyección de contenido o SVG reemplazable.',
+        'Evolución pública e incremental, con mejoras guiadas por pruebas reales de consumo.',
+      ],
+      learning:
+        'Una UI open source confiable depende tanto de la instalación, documentación, accesibilidad y libertad de personalización como de la calidad de sus componentes.',
     },
   ],
   skills: [

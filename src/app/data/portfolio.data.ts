@@ -219,6 +219,44 @@ export const PORTFOLIO_DATA: PortfolioContent = {
       learning:
         'Um site simples ganha confiança ao ser rigoroso com a origem das imagens, o conteúdo publicado e a quantidade de JavaScript entregue.',
     },
+    {
+      slug: 'aevko-ui',
+      eyebrow: 'Open source · Angular UI',
+      title: 'Aevko UI',
+      summary:
+        'Biblioteca open source de componentes Angular instalados como código local, com registry, CLI e documentação próprios.',
+      image: 'assets/projects/aevko.svg',
+      imageAlt: 'Identidade monocromática da biblioteca de componentes Aevko UI',
+      role: 'Produto, design system e engenharia open source',
+      stack: ['Angular 22', 'TypeScript', 'Tailwind CSS 4', 'GitHub Actions', 'npm'],
+      facts: [
+        '64 componentes editáveis distribuídos por registry e CLI',
+        'Sem dependência de runtime da Aevko ou biblioteca de ícones obrigatória',
+        'Em construção, com melhorias contínuas de componentes, documentação e DX',
+      ],
+      status: 'Em construção · melhorias contínuas',
+      siteUrl: 'https://aevko.jhonata.dev/',
+      repositoryUrl: 'https://github.com/jhoownogueira/aevko',
+      metrics: [
+        { label: 'Componentes', value: '64' },
+        { label: 'Distribuição', value: 'Registry · CLI' },
+        { label: 'Licença', value: 'MIT' },
+      ],
+      challenge:
+        'Oferecer componentes reutilizáveis sem impor uma identidade visual forte, uma dependência de runtime ou uma abstração que limite o código do consumidor.',
+      architecture: [
+        'Um registry canônico mantém componentes Angular standalone, metadados e dependências transitivas em uma única fonte.',
+        'O CLI publicado no npm copia somente os componentes solicitados para o projeto do consumidor, onde permanecem editáveis.',
+        'Documentação, GitHub Pages e pipelines validam SSR, acessibilidade, instalação isolada e publicação com provenance.',
+      ],
+      decisions: [
+        'Código local e editável em vez de uma biblioteca de runtime fechada.',
+        'Sem dependência obrigatória de Lucide; ícones entram por projeção de conteúdo ou SVG substituível.',
+        'Evolução pública e incremental, com melhorias guiadas por testes reais de consumo.',
+      ],
+      learning:
+        'Uma UI open source confiável depende tanto da qualidade dos componentes quanto da instalação, documentação, acessibilidade e liberdade de customização que os acompanham.',
+    },
   ],
   skills: [
     { name: 'Frontend', items: ['Angular', 'React', 'Next.js', 'TypeScript', 'Tailwind CSS'] },

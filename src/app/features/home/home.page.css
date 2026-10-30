@@ -224,7 +224,7 @@ h1 span {
   gap: 1.5rem;
   margin-top: clamp(4rem, 7vw, 7rem);
 }
-.projects-grid j-project-card:last-child {
+.projects-grid j-project-card:last-child:nth-child(odd) {
   grid-column: 1 / -1;
   width: calc(50% - 0.75rem);
 }
@@ -423,7 +423,7 @@ h1 span {
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  .projects-grid j-project-card:last-child {
+  .projects-grid j-project-card:last-child:nth-child(odd) {
     grid-column: auto;
     width: 100%;
   }
